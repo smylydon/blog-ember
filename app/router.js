@@ -12,4 +12,8 @@ Router.map(function () {
     this.route('index', { path: '/' });
     this.route('current', { path: '/:post_id' });
   });
+
+  this.route('edit', function () {
+    this.route('current', { path: '/:post_id' });
+  });
 });
