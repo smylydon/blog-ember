@@ -1,7 +1,17 @@
 {{page-title "Blog"}}
-
-{{! The following component displays Ember's default welcome message. }}
-<WelcomePage />
-{{! Feel free to remove this! }}
-
-{{outlet}}
+<header class="header">
+  <h1>Redux Blog</h1>
+  <nav>
+    <ul>
+      <li>
+        <a routerLink="/">Home</a>
+      </li>
+      <li>
+        <a routerLink="/post">Post</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<main class="App">
+  {{outlet}}
+</main>
