@@ -7,5 +7,9 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
-  this.route('not-found');
+  this.route('not-found', { path: '/*path' });
+  this.route('post', function () {
+    this.route('index', { path: '/' });
+    this.route('current', { path: '/:post_id' });
+  });
 });
