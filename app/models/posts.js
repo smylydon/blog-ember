@@ -4,4 +4,5 @@ export default class PostsModel extends Model {
   @attr title;
   @attr userId;
   @attr body;
+  @attr('post-date') date;
 }
