@@ -1,0 +1,21 @@
+<section>
+  <h2>Edit Post</h2>
+  <form id="editForm">
+    <label htmlFor="postTitle">Post Title:</label>
+    <input type="text" id="postTitle" name="postTitle" value={{@post.title}} />
+    <Edit::Selector @users={{this.api.users}} />
+    <label htmlFor="postContent">Content:</label>
+    <textarea
+      id="postContent"
+      name="postContent"
+      value={{@post.body}}
+    ></textarea>
+    <button type="button">
+      Save Post
+    </button>
+    <button class="delete-button" type="button">
+      Delete Post
+    </button>
+    <input type="hidden" id="postId" name="postId" />
+  </form>
+</section>

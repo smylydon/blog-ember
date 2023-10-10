@@ -1,0 +1,6 @@
+<label htmlFor="postAuthor">Author:</label>
+<select id="postAuthor" name="postAuthor">
+  {{#each @users as |user|}}
+    <option value={{user.id}}>{{user.username}}</option>
+  {{/each}}
+</select>
