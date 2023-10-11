@@ -10,4 +10,8 @@ export default class PostsModel extends Model {
     },
   })
   date;
+
+  get myUserId() {
+    return this.userId + '';
+  }
 }

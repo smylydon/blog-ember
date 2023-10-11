@@ -3,7 +3,7 @@
   <form id="editForm">
     <label htmlFor="postTitle">Post Title:</label>
     <input type="text" id="postTitle" name="postTitle" value={{@post.title}} />
-    <Edit::Selector @users={{this.api.users}} />
+    <Edit::Selector @users={{this.api.users}} @userid={{@post.myUserId}} />
     <label htmlFor="postContent">Content:</label>
     <textarea
       id="postContent"

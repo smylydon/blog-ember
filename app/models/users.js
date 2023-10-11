@@ -4,4 +4,7 @@ export default class UsersModel extends Model {
   @attr name;
   @attr username;
   @attr email;
+  get myId() {
+    return this.id + '';
+  }
 }
