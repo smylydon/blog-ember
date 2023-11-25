@@ -6,7 +6,6 @@ export default class ApiService extends Service {
   @tracked users;
 
   async initialize() {
-    console.log('Api Service');
     this.store.findAll('users').then((users) => (this.users = users));
     return this.allPosts();
   }
