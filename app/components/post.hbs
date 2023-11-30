@@ -12,11 +12,5 @@
 
     <TimeAgo @timestamp={{@post.date}} />
   </p>
-  -
-  {{!
-  <lib-reaction-buttons
-    [post]="post"
-    (newPost)="emitPost($event)"
-  ></lib-reaction-buttons>
-  }}
+  <ReactionButtons />
 </article>
