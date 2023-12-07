@@ -1,7 +1,24 @@
 <div>
   {{#each this.emojis as |emoji|}}
-    <button type="button" class="reaction-button">
+    <button
+      type="button"
+      class="reaction-button"
+      {{on "click" (fn this.reacted emoji)}}
+    >
       {{emoji.icon}}
+      {{#if (eq emoji.name "thumbsUp")}}
+        {{this.reactions.thumbsUp}}
+      {{else if (eq emoji.name "wow")}}
+        {{this.reactions.wow}}
+      {{else if (eq emoji.name "heart")}}
+        {{this.reactions.heart}}
+      {{else if (eq emoji.name "rocket")}}
+        {{this.reactions.rocket}}
+      {{else if (eq emoji.name "coffee")}}
+        {{this.reactions.coffee}}
+      {{else}}
+        -
+      {{/if}}
     </button>
   {{/each}}
 </div>
