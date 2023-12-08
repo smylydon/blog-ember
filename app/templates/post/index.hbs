@@ -1,3 +1,15 @@
-{{page-title "New Post"}}
-<h1>New Post</h1>
-<Post />
+{{page-title "Add a New Post"}}
+<section>
+  <h2>Add a New Post</h2>
+  <form id="editForm">
+    <label htmlFor="postTitle">Post Title:</label>
+    <input type="text" id="postTitle" name="postTitle" />
+    <Edit::Selector @users={{this.api.users}} @userid={{@post.myUserId}} />
+    <label htmlFor="postContent">Content:</label>
+    <textarea id="postContent" name="postContent"></textarea>
+    <button type="button">
+      Save Post
+    </button>
+    <input type="hidden" id="postId" name="postId" />
+  </form>
+</section>

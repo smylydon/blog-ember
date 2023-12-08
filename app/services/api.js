@@ -1,6 +1,7 @@
 import Service from '@ember/service';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+
 export default class ApiService extends Service {
   @service store;
   @tracked users;
@@ -12,6 +13,10 @@ export default class ApiService extends Service {
 
   async getPost(id) {
     return await this.store.findRecord('posts', id);
+  }
+
+  deletePost(id) {
+    return this.store.delete('posts', id);
   }
 
   async getUser(id) {
