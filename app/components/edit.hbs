@@ -1,21 +1,37 @@
 <section>
-  <h2>Edit Post</h2>
-  <form id="editForm">
-    <label htmlFor="postTitle">Post Title:</label>
-    <input type="text" id="postTitle" name="postTitle" value={{@post.title}} />
-    <Edit::Selector @users={{this.api.users}} @userid={{@post.myUserId}} />
-    <label htmlFor="postContent">Content:</label>
-    <textarea
-      id="postContent"
-      name="postContent"
-      value={{@post.body}}
-    ></textarea>
-    <button type="button">
-      Save Post
-    </button>
-    <button class="delete-button" type="button">
+  <Edit::Form @name="editForm" @title="Edit Post" @form={{this.form}}>
+    <Edit::Input
+      @label="Post Title:"
+      @name="postTitle"
+      @value={{@post.title}}
+      @validator={{this.postTitle}}
+    />
+    <Edit::Selector
+      @items={{this.items}}
+      @initialIid={{@post.myUserId}}
+      @label="Author:"
+      @validator={{this.postAuthor}}
+    />
+    <Edit::TextArea
+      @label="Content:"
+      @name="postContent"
+      @value={{@post.body}}
+      @validator={{this.postContent}}
+    />
+
+    {{#if this.valid}}
+      <button type="button" {{on "click" this.savePost}}>
+        Save Post
+      </button>
+    {{else}}
+      <button type="button" disabled {{on "click" this.savePost}}>
+        Save Post
+      </button>
+    {{/if}}
+    <button class="delete-button" type="button" {{on "click" this.deletePost}}>
       Delete Post
     </button>
+
     <input type="hidden" id="postId" name="postId" />
-  </form>
+  </Edit::Form>
 </section>

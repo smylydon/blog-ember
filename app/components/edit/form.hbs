@@ -1,0 +1,6 @@
+{{#if @title}}
+  <h2>{{@title}}</h2>
+{{/if}}
+<form id={{@name}} {{did-insert this.ready}}>
+  {{yield}}
+</form>

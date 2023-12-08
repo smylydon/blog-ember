@@ -4,10 +4,17 @@ import { tracked } from '@glimmer/tracking';
 
 export default class ApiService extends Service {
   @service store;
-  @tracked users;
+  @tracked users = [];
 
   async initialize() {
-    this.store.findAll('users').then((users) => (this.users = users));
+    this.store.findAll('users').then((users) => {
+      this.users = users.map((user) => {
+        return {
+          id: user.id,
+          item: user.name,
+        };
+      });
+    });
     return this.allPosts();
   }
 

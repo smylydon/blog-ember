@@ -1,0 +1,9 @@
+{{#if @label}}
+  <label htmlFor="input">{{@label}}</label>
+{{/if}}
+<input
+  name="input"
+  value={{@value}}
+  {{on "input" this.inputChanged}}
+  {{did-insert this.ready}}
+/>

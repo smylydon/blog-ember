@@ -1,11 +1,13 @@
-<label htmlFor="postAuthor">Author:</label>
-<select id="postAuthor" name="postAuthor">
+{{#if @label}}
+  <label htmlFor="selector">{{@label}}</label>
+{{/if}}
+<select name="selector" {{on "change" this.selected}} {{did-insert this.ready}}>
   <option value=""></option>
-  {{#each @users as |user|}}
-    {{#if (eq user.myId @userid)}}
-      <option value={{user.id}} selected>{{user.username}}</option>
+  {{#each @items as |item|}}
+    {{#if (eq item.id @initialIid)}}
+      <option value={{item.id}} selected>{{item.item}}</option>
     {{else}}
-      <option value={{user.id}}>{{user.username}}</option>
+      <option value={{item.id}}>{{item.item}}</option>
     {{/if}}
   {{/each}}
 </select>

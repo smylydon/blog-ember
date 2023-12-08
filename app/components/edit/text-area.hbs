@@ -1,0 +1,9 @@
+{{#if @label}}
+  <label htmlFor="textArea">{{@label}}</label>
+{{/if}}
+<textarea
+  name="input"
+  value={{@value}}
+  {{on "input" this.textAreaChanged}}
+  {{did-insert this.ready}}
+></textarea>
