@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
-export default class EditTextAreaComponent extends Component {
+export default class FormTextAreaComponent extends Component {
   @tracked postTitle;
 
   @action

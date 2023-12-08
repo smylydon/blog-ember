@@ -1,5 +1,5 @@
 <section>
-  <Form @name="editForm" @title="Edit Post" @form={{this.form}}>
+  <Form @name="addForm" @title="New Post" @form={{this.form}}>
     <Form::Input
       @label="Post Title:"
       @name="postTitle"
@@ -8,7 +8,7 @@
     />
     <Form::Selector
       @items={{this.items}}
-      @initialIid={{@post.myUserId}}
+      @initialIid="0"
       @label="Author:"
       @validator={{this.postAuthor}}
     />
@@ -28,10 +28,5 @@
         Save Post
       </button>
     {{/if}}
-    <button class="delete-button" type="button" {{on "click" this.deletePost}}>
-      Delete Post
-    </button>
-
-    <input type="hidden" id="postId" name="postId" />
   </Form>
 </section>

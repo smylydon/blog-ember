@@ -1,8 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
 
-export default class EditFormComponent extends Component {
+export default class FormComponent extends Component {
   @action
   ready() {
     const form = this.args.form;

@@ -3,22 +3,22 @@ import { setupRenderingTest } from 'blog/tests/helpers';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | edit/selector', function (hooks) {
+module('Integration | Component | form/selector', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<Edit::Selector />`);
+    await render(hbs`<Form::Selector />`);
 
     assert.dom().hasText('');
 
     // Template block usage:
     await render(hbs`
-      <Edit::Selector>
+      <Form::Selector>
         template block text
-      </Edit::Selector>
+      </Form::Selector>
     `);
 
     assert.dom().hasText('template block text');
