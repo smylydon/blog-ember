@@ -6,6 +6,6 @@ export default class EditCurrentRoute extends Route {
 
   model(params) {
     const { post_id } = params;
-    return this.api.getPost(post_id);
+    return this.api.peekPost(post_id);
   }
 }

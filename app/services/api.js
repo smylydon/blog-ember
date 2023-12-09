@@ -22,8 +22,13 @@ export default class ApiService extends Service {
     return await this.store.findRecord('posts', id);
   }
 
-  deletePost(id) {
-    return this.store.delete('posts', id);
+  async peekPost(id) {
+    return await this.store.peekRecord('posts', id);
+  }
+
+  async deletePost(id) {
+    let post = await this.peekPost(id);
+    post.destroyRecord();
   }
 
   async getUser(id) {
@@ -32,6 +37,10 @@ export default class ApiService extends Service {
 
   async allPosts() {
     return await this.store.findAll('posts');
+  }
+
+  async peekAllPosts() {
+    return await this.store.peekAll('posts');
   }
 
   async allUsers() {

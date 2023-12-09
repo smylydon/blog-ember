@@ -5,6 +5,7 @@ import { service } from '@ember/service';
 
 export default class EditComponent extends Component {
   @service api;
+  @service router;
 
   @tracked postTitle;
   @tracked postAuthor;
@@ -62,8 +63,9 @@ export default class EditComponent extends Component {
   }
 
   @action
-  deletePost() {
-    console.log('delete post.............');
+  async deletePost() {
+    this.api.deletePost(this.postAuthor.value);
+    this.router.transitionTo('index'); // there is a better way of doing this.....
   }
 
   @action
