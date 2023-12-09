@@ -15,28 +15,29 @@ export default class ApiService extends Service {
         };
       });
     });
-    return this.allPosts();
+    await this.store.findAll('posts');
+    return this.peekAllPosts();
   }
 
-  async getPost(id) {
-    return await this.store.findRecord('posts', id);
+  peekPost(id) {
+    return this.store.peekRecord('posts', id);
   }
 
-  async peekPost(id) {
-    return await this.store.peekRecord('posts', id);
-  }
+  deletePost(id) {
+    let post = this.peekPost(id);
 
-  async deletePost(id) {
-    let post = await this.peekPost(id);
-    post.destroyRecord();
+    return new Promise((resolve, reject) => {
+      if (post) {
+        post.destroyRecord();
+        resolve();
+      } else {
+        reject('record not found');
+      }
+    });
   }
 
   async getUser(id) {
     return await this.store.findRecord('users', id);
-  }
-
-  async allPosts() {
-    return await this.store.findAll('posts');
   }
 
   async peekAllPosts() {

@@ -11,7 +11,7 @@ export default class EditComponent extends Component {
   @tracked postAuthor;
   @tracked postContent;
   @tracked form;
-  @tracked valid = true;
+  @tracked valid = false;
 
   constructor(owner, args) {
     super(owner, args);
@@ -64,8 +64,14 @@ export default class EditComponent extends Component {
 
   @action
   async deletePost() {
-    this.api.deletePost(this.postAuthor.value);
-    this.router.transitionTo('index'); // there is a better way of doing this.....
+    const id = !!this.args.post && this.args.post.id;
+    try {
+      await this.api.deletePost(id);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      this.router.transitionTo('index');
+    }
   }
 
   @action
