@@ -36,6 +36,15 @@ export default class ApiService extends Service {
     });
   }
 
+  savePost(post) {
+    return post.save();
+  }
+
+  createPost(post) {
+    const newPost = this.store.createRecord('posts', post);
+    return newPost.save();
+  }
+
   async getUser(id) {
     return await this.store.findRecord('users', id);
   }

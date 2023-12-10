@@ -75,7 +75,18 @@ export default class EditComponent extends Component {
   }
 
   @action
-  savePost() {
-    console.log('savePost post.............');
+  async savePost() {
+    const post = this.args.post;
+    post.set('title', this.postTitle.value);
+    post.set('body', this.postContent.value);
+    post.set('userid', this.postAuthor.value);
+
+    try {
+      await this.api.savePost(post);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      this.router.transitionTo('index');
+    }
   }
 }

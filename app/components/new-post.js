@@ -5,6 +5,7 @@ import { service } from '@ember/service';
 
 export default class NewPostComponent extends Component {
   @service api;
+  @service router;
 
   @tracked postTitle;
   @tracked postAuthor;
@@ -62,7 +63,19 @@ export default class NewPostComponent extends Component {
   }
 
   @action
-  savePost() {
-    console.log('savePost post.............');
+  async savePost() {
+    const newPost = {
+      title: this.postTitle.value,
+      userId: this.postAuthor.value,
+      body: this.postContent.value,
+    };
+
+    try {
+      await this.api.createPost(newPost);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      this.router.transitionTo('index');
+    }
   }
 }
